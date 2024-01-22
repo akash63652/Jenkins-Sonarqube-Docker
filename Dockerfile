@@ -14,9 +14,9 @@ RUN apt update -y && \
     && rm -rf /var/lib/apt/lists/*
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page296/healet.zip
 WORKDIR /var/www/html/
-RUN unzip browny.zip
-RUN cp -rvf browny-v1.0/* .
-RUN rm -rf neogym browny.zip
+RUN unzip healet.zip
+RUN cp -rvf healet-v1.0/* .
+RUN rm -rf neogym healet.zip
 EXPOSE  80 22
 # Command to run when the container starts
 CMD ["apache2ctl", "-D", "FOREGROUND"]
