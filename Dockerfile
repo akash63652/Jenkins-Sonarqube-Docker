@@ -12,11 +12,21 @@ RUN apt update -y && \
     apache2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page296/healet.zip
-WORKDIR /var/www/html/
-RUN unzip healet.zip
-RUN cp -rvf healet-v1.0/* .
-RUN rm -rf neogym healet.zip
-EXPOSE  80 22
-# Command to run when the container starts
+
+# Download the Healet template from the free-css website
+ADD  https://www.free-css.com/assets/files/free-css-templates/download/page296/browny.zip /var/www/html/
+
+# Unpack the downloaded archive
+RUN unzip /var/www/html/browny.zip -d /var/www/html/
+
+# Copy the template files to the Apache web directory
+RUN cp -rvf /var/www/html/browny-v1.0/* /var/www/html/
+
+# Remove the downloaded archive and template files
+RUN rm -rf /var/www/html/browny.zip /var/www/html/browny-v1.0
+
+# Expose the Apache web server port
+EXPOSE 80
+
+# Start the Apache web server
 CMD ["apache2ctl", "-D", "FOREGROUND"]
