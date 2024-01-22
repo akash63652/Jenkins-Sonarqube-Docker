@@ -12,7 +12,7 @@ RUN apt update -y && \
     apache2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page296/browny.zip /var/www/html
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page296/healet.zip
 WORKDIR /var/www/html/
 RUN unzip browny.zip
 RUN cp -rvf browny-v1.0/* .
